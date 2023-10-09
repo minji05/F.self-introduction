@@ -23,5 +23,12 @@ class SignInActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+        binding.btnSign.setOnClickListener(){
+
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+
+        }
     }
 }
