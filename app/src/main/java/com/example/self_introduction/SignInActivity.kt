@@ -19,11 +19,10 @@ class SignInActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener() {
 
-            if (binding.tvId.text.toString().trim().isEmpty() || binding.tvPw.text.toString().trim()
-                    .isEmpty()
-            ) {
+            if (binding.tvId.text.toString().trim().isEmpty() || binding.tvPw.text.toString().trim().isEmpty()) {
                 Toast.makeText(this, "아이디/비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
+            }
 
 
                 Log.d("로그인 로그", "로그인 성공")
@@ -42,4 +41,3 @@ class SignInActivity : AppCompatActivity() {
             }
         }
     }
-}
