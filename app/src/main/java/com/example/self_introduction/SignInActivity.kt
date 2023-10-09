@@ -6,16 +6,30 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.self_introduction.databinding.ActivitySignInBinding
 
 
 private lateinit var binding: ActivitySignInBinding
 class SignInActivity : AppCompatActivity() {
+    lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                val user_id = it.data?.getStringExtra("id") ?: ""
+                val user_pw = it.data?.getStringExtra("pw") ?: ""
+                binding.tvId.setText(user_id)
+                binding.tvPw.setText(user_pw)
+            }
+        }
 
         binding.btnLogin.setOnClickListener() {
 
@@ -34,10 +48,11 @@ class SignInActivity : AppCompatActivity() {
             }
 
             binding.btnSign.setOnClickListener() {
+//            val intent = Intent(this, SignUpActivity::class.java)
+//            startActivity(intent)
 
                 val intent = Intent(this, SignUpActivity::class.java)
-                startActivity(intent)
-
+                activityResultLauncher.launch(intent)
             }
         }
     }
