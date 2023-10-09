@@ -23,7 +23,11 @@ class SignUpActivity : AppCompatActivity() {
                 }
 
             val intent = Intent(this, SignInActivity::class.java)
-            startActivity(intent)
+            intent.putExtra("id", binding.tvId.text.toString())
+            intent.putExtra("pw", binding.tvPw.text.toString())
+            setResult(RESULT_OK, intent)
+
+            if (!isFinishing) finish()
         }
     }
 }
