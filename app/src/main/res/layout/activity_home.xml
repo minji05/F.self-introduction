@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_people1" />
+        app:srcCompat="@drawable/ic_people2" />
 
     <TextView
         android:id="@+id/tv_id_output"

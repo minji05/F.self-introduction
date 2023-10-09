@@ -12,7 +12,11 @@ class HomeActivity : AppCompatActivity() {
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.textView2.text = intent.getStringExtra("activity")
+        binding.tvIdOutput.text = "아이디 : ${intent.getStringExtra("activity")}"
 
+
+        binding.btnFinish.setOnClickListener{
+            finish()
+        }
     }
 }
